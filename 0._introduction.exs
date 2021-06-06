@@ -5,9 +5,9 @@ defmodule SlidingWindow do
   Output: [2.2, 2.8, 2.4, 3.6, 2.8]
 
   Run in terminal:
-  - elixir 0._introduction.ex --slow_version
-  - elixir 0._introduction.ex --fast_version
-  - elixir 0._introduction.ex --test
+  - elixir 0._introduction.exs --slow_version
+  - elixir 0._introduction.exs --fast_version
+  - elixir 0._introduction.exs --test
   """
 
   ### SLOW ###
