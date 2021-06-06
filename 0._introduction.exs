@@ -104,5 +104,5 @@ case System.argv() do
     end
 
   _ ->
-    IO.puts(:stderr, "\nplease specify --slow_version, --fast_version --test")
+    IO.puts(:stderr, "\nplease specify --slow_version, --fast_version or --test")
 end
