@@ -85,7 +85,7 @@ case System.argv() do
           %{input_array: input_array, k: k, output: output}
         end
 
-        test "SUCCES: outputs from both functions are correct", %{
+        test "SUCCESS: outputs from both functions are correct", %{
           input_array: input_array,
           k: k,
           output: output
