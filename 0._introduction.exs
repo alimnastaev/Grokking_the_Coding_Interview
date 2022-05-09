@@ -15,7 +15,7 @@ defmodule SlidingWindow do
     do: do_find_averages_of_subarrays_slow(array, k, [])
 
   def do_find_averages_of_subarrays_slow(array, k, acc) when length(array) < k,
-    do: acc |> Enum.reverse()
+    do: Enum.reverse(acc)
 
   def do_find_averages_of_subarrays_slow([_head | tail] = array, k, acc) do
     subarray_sum =
@@ -47,7 +47,7 @@ defmodule SlidingWindow do
         end
       end)
 
-    result |> Enum.reverse()
+    Enum.reverse(result)
   end
 
   defp count_average(sum), do: sum / 5
