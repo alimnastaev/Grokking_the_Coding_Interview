@@ -16,26 +16,21 @@ defmodule SlidingWindow do
   """
 
   def maximum_sum_subarray(array, k) do
-    chunked_array = Enum.chunk_every(array, k, 1, :discard)
+    array
+    |> Enum.chunk_every(k, 1, :discard)
+    |> Enum.reduce([0, 0], fn
+      [head | _] = subarray, [0, 0] ->
+        first_array_sum = Enum.sum(subarray)
+        [first_array_sum, new_common_sum(first_array_sum, head)]
 
-    [result, _] =
-      Enum.reduce(chunked_array, [0, 0], fn [head | _] = subarray, [result, common_sum] ->
-        if result == 0 and common_sum == 0 do
-          first_array_sum = Enum.sum(subarray)
-          [result + first_array_sum, new_common_sum(first_array_sum, head)]
-        else
-          subarray_sum = common_sum + List.last(subarray)
+      [head | _] = subarray, [result, common_sum] ->
+        subarray_sum = common_sum + List.last(subarray)
 
-          result = if subarray_sum > result, do: subarray_sum, else: result
+        result = if subarray_sum > result, do: subarray_sum, else: result
 
-          [
-            result,
-            new_common_sum(subarray_sum, head)
-          ]
-        end
-      end)
-
-    result
+        [result, new_common_sum(subarray_sum, head)]
+    end)
+    |> then(fn [result, _] -> result end)
   end
 
   defp new_common_sum(array_sum, head), do: array_sum - head
